@@ -1,91 +1,55 @@
-'use strict';
+"use strict";
 
-var getFirstname = function getFirstname(fullName) {
-  return fullName.split(' ')[0];
+var count = 0;
+var addOne = function addOne() {
+  count++;
+  renderCounterApp();
 };
-console.log(getFirstname('Muhammet ESER'));
-
-var multiplier = {
-  numbers: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-  multiplyBy: 2,
-  multiply: function multiply() {
-    var _this = this;
-
-    return this.numbers.map(function (number) {
-      return number * _this.multiplyBy;
-    });
-  }
+var minusOne = function minusOne() {
+  if (count > 0) count--;
+  renderCounterApp();
 };
 
-console.log(multiplier.multiply());
-
-var app = {
-  title: 'Indecision',
-  subtitle: ' Some cool subtitle',
-  options: ['One', 'Two']
+var reset = function reset() {
+  count = 0;
+  renderCounterApp();
 };
-
-var template = React.createElement(
-  'div',
-  null,
-  React.createElement(
-    'h1',
-    null,
-    ' ',
-    app.title,
-    ' '
-  ),
-  app.subtitle && React.createElement(
-    'p',
-    null,
-    ' ',
-    app.subtitle,
-    ' '
-  ),
-  React.createElement(
-    'p',
-    null,
-    ' ',
-    app.options.length > 0 ? 'Here options' : 'No Options',
-    ' '
-  )
-);
-
-var user = {
-  name: 'Andrew',
-  age: 19,
-  locaition: 'New York'
-};
-
-function getLocation(locaition) {
-  if (locaition) return locaition;
-  return 'Unknown';
-}
-
-var templateTwo = React.createElement(
-  'div',
-  null,
-  React.createElement(
-    'h1',
-    null,
-    ' ',
-    user.name ? user.name : 'Anonymous',
-    ' '
-  ),
-  user.age >= 18 && React.createElement(
-    'p',
-    null,
-    'Age: ',
-    user.age
-  ),
-  React.createElement(
-    'p',
-    null,
-    'Location: ',
-    getLocation(user.locaition)
-  )
-);
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot);
+var renderCounterApp = function renderCounterApp() {
+
+  var template = React.createElement(
+    "div",
+    { className: "container" },
+    React.createElement(
+      "div",
+      { className: "wrapper" },
+      React.createElement(
+        "button",
+        { onClick: addOne, className: "btn" },
+        "+1"
+      ),
+      React.createElement(
+        "h3",
+        null,
+        "Count: ",
+        count,
+        " "
+      ),
+      React.createElement(
+        "button",
+        { onClick: minusOne, className: "btn" },
+        "-1"
+      )
+    ),
+    React.createElement(
+      "button",
+      { onClick: reset, className: "btn reset" },
+      "Reset"
+    )
+  );
+  ReactDOM.render(template, appRoot);
+};
+
+renderCounterApp();
