@@ -1,8 +1,13 @@
 'use strict';
 
+// if statement
+// ternaty operators
+// logical and opreators
+
 var app = {
   title: 'Indecision',
-  subtitle: ' Some cool subtitle'
+  subtitle: ' Some cool subtitle',
+  options: ['One', 'Two']
 };
 
 var template = React.createElement(
@@ -15,20 +20,32 @@ var template = React.createElement(
     app.title,
     ' '
   ),
-  React.createElement(
+  app.subtitle && React.createElement(
     'p',
     null,
     ' ',
     app.subtitle,
+    ' '
+  ),
+  React.createElement(
+    'p',
+    null,
+    ' ',
+    app.options.length > 0 ? 'Here options' : 'No Options',
     ' '
   )
 );
 
 var user = {
   name: 'Andrew',
-  age: 26,
+  age: 19,
   locaition: 'New York'
 };
+
+function getLocation(locaition) {
+  if (locaition) return locaition;
+  return 'Unknown';
+}
 
 var templateTwo = React.createElement(
   'div',
@@ -37,10 +54,10 @@ var templateTwo = React.createElement(
     'h1',
     null,
     ' ',
-    user.name,
+    user.name ? user.name : 'Anonymous',
     ' '
   ),
-  React.createElement(
+  user.age >= 18 && React.createElement(
     'p',
     null,
     'Age: ',
@@ -50,7 +67,7 @@ var templateTwo = React.createElement(
     'p',
     null,
     'Location: ',
-    user.locaition
+    getLocation(user.locaition)
   )
 );
 
