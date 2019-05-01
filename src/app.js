@@ -1,6 +1,16 @@
-// if statement
-// ternaty operators
-// logical and opreators
+const getFirstname = fullName => fullName.split(' ')[0];
+console.log(getFirstname('Muhammet ESER'));
+
+const multiplier = {
+  numbers: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  multiplyBy: 2,
+  multiply() {
+    return this.numbers.map(number => number * this.multiplyBy);
+  }
+};
+
+console.log(multiplier.multiply());
+
 
 const app = {
   title: 'Indecision',
