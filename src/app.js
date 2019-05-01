@@ -17,12 +17,37 @@ class Person {
   }
 }
 
-const me = new Person('Muhammet', 24);
-console.log(me.getDescription());
-console.log(me.getGretting());
+class Student extends Person {
+  constructor(name, age, major) {
+    super(name, age);
+    this.major = major;
+  }
+  hasMajor() {
+    return !!this.major;
+  }
+}
 
-const other = new Person();
-console.log(other.getDescription());
+class Traveler extends Person {
+  constructor(name, age, homeLocation) {
+    super(name, age);
+    this.homeLocation = homeLocation;
+  }
+  getGretting() {
+    let greeting = super.getGretting();
+    if (this.homeLocation) {
+      greeting += ` I'm visiting from ${this.homeLocation}.`;
+    }
+    return greeting;
+  }
+}
+
+const me = new Student('Muhammet', 24, 'Computer Science');
+
+const other = new Student();
+
+const traveler = new Traveler('Alex', 29, 'Brazil');
+console.log(traveler.getGretting());
+
 
 
 
