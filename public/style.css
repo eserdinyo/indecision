@@ -7,8 +7,7 @@ body {
     position: absolute;
     top: 10%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    margin-top: 20px;
+    transform: translateX(-50%);
 }
 
 .wrapper {
@@ -30,4 +29,8 @@ body {
 .reset {
     display: block;
     margin: 0 auto
+}
+
+.showDetail {
+    display: none;
 }
