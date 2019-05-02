@@ -30,7 +30,6 @@ class Action extends React.Component {
   handlePick() {
 
   }
-
   render() {
     return (
       <div>
